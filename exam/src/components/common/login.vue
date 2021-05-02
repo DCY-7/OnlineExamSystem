@@ -34,13 +34,19 @@
     </el-row>
     <el-row class="footer">
       <el-col>
-        <p class="msg2">版权所有 ©2019 <!--重庆文理学院计科2班余晓江--> 保留所有权利 渝ICP备19001371号</p>
+        <p class="msg2">© 2011~2018 晋中学院网络1701班邓晨阳 | 京ICP备12031756号 | 京ICP证150143号 | 京公网安备11010502036099号</p>
       </el-col>
     </el-row>
     <section class="remind">
-      <span>管理员账号：9527</span>
-      <span>教师账号：20081001</span>
-      <span>密码都是：123456</span>
+      <span>admin：9527</span>
+      <span>赵一老师：20210001</span>
+      <span>钱二老师：20210002</span>
+      <span>隔壁老王：20154001</span>
+      <span>大咸鱼：20154084</span>
+      <span>张大宝：20155003</span>
+      <span>翠花：20155007</span>
+      <span>小王：20155008</span>
+      <span>密码：123456</span>
     </section>
   </div>
 </template>
