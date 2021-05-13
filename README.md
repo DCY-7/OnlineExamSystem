@@ -11,30 +11,30 @@
 
 
 * ## 页面截图
-  ![登录](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E7%99%BB%E5%BD%95.png?raw=true)
+  ![登录](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212221.png)
 
   <center>登录</center>
 
-![试卷列表](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E8%AF%95%E5%8D%B7%E5%88%97%E8%A1%A8.png?raw=true)
+![试卷列表](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212229.png)
 
 <center>试卷列表</center>
 
-![答题模块](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E7%AD%94%E9%A2%98%E6%A8%A1%E5%9D%97.png?raw=true)
+![答题模块](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212237.png)
 
 <center>答题模块</center>
 
-![练习模式](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E7%BB%83%E4%B9%A0%E6%A8%A1%E5%BC%8F.png?raw=true)
+![练习模式](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212244.png)
 
 <center>练习模式</center>
 
-![留言模块](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E7%95%99%E8%A8%80%E6%A8%A1%E5%9D%97.png?raw=true)
+![留言模块](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212250.png)
 
 <center>留言模块<center/>
 
-![后台管理](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86.png?raw=true)
+![后台管理](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212258.png)
 
 <center>后台管理</center>
 
-![学生成绩](https://github.com/YXJ2018/SpringBoot-Vue-OnlineExam/blob/master/img/%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E6%8A%98%E7%BA%BF%E5%9B%BE.png?raw=true)
+![学生成绩](https://picture-bed01.oss-cn-beijing.aliyuncs.com/img/20210510212310.png)
 
 <center>学生成绩</center>
