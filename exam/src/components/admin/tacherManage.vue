@@ -1,7 +1,13 @@
 // 教师管理页面
 <template>
   <div class="all">
+    <ul class="top">
+      <li class="order">教师信息列表</li>
+      <li class="search-li"><div class="icon"><input type="text" placeholder="教师姓名" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
+      <li><el-button type="primary" @click="search()">搜索教师</el-button></li>
+    </ul>
     <el-table :data="pagination.records" border>
+      <el-table-column fixed="left" prop="teacherId" label="职工号" width="180"></el-table-column>
       <el-table-column fixed="left" prop="teacherName" label="姓名" width="180"></el-table-column>
       <el-table-column prop="institute" label="学院" width="200"></el-table-column>
       <el-table-column prop="sex" label="性别" width="120"></el-table-column>
@@ -69,14 +75,15 @@
 export default {
   data() {
     return {
+      key: null, //搜索关键字
       pagination: {
-        //分页后的考试信息
+        //分页后的教师信息
         current: 1, //当前页
         total: null, //记录条数
         size: 6, //每页条数
       },
       dialogVisible: false, //对话框
-      form: {}, //保存点击以后当前试卷的信息
+      form: {}, //保存点击以后当前教师的信息
     };
   },
   created() {
@@ -84,7 +91,7 @@ export default {
   },
   methods: {
     getTeacherInfo() {
-      //分页查询所有试卷信息
+      //分页查询所有教师信息
       this.$axios(`/api/teachers/${this.pagination.current}/${this.pagination.size}`).then(res => {
         this.pagination = res.data.data;
       }).catch(error => {});
@@ -99,13 +106,19 @@ export default {
       this.pagination.current = val;
       this.getTeacherInfo();
     },
+    //按教师姓名模糊查询，教师信息
+    search() {
+      this.$axios(`/api/teachers/${this.pagination.current}/${this.pagination.size}/${this.key}`).then(res => {
+        this.pagination = res.data.data;
+      }).catch(error => {});
+    },
     checkGrade(teacherId) { //修改教师信息
       this.dialogVisible = true
       this.$axios(`/api/teacher/${teacherId}`).then(res => {
         this.form = res.data.data
       })
     },
-    deleteById(teacherId) { //删除当前学生
+    deleteById(teacherId) { //删除当前教师
       this.$confirm("确定删除当前教师吗？删除后无法恢复","Warning",{
         confirmButtonText: '确定删除',
         cancelButtonText: '算了,留着吧',
@@ -171,5 +184,57 @@ export default {
 
 .el-table .success-row {
   background: #dd5862;
+}
+
+.top .order {
+  cursor: pointer;
+}
+.top .order:hover {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .order:visited {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .el-icon-search {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.top .icon {
+  position: relative;
+}
+.top {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.search-li {
+  margin-left: auto;
+}
+.top .search-li {
+  margin-left: auto;
+}
+.top li {
+  display: flex;
+  align-items: center;
+}
+.top .search {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.top .search:hover {
+  color: #0195ff;
+  border-color: #0195ff;
+}
+.top {
+  display: flex;
+}
+.top li {
+  margin: 20px;
 }
 </style>

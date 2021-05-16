@@ -2,6 +2,7 @@ package com.exam.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.exam.entity.Student;
 import com.exam.entity.Teacher;
 import org.apache.ibatis.annotations.*;
 
@@ -31,4 +32,7 @@ public interface TeacherMapper {
     @Insert("insert into teacher(teacherName,sex,tel,email,pwd,cardId,role,type,institute) " +
             "values(#{teacherName},#{sex},#{tel},#{email},#{pwd},#{cardId},#{role},#{type},#{institute})")
     public int add(Teacher teacher);
+
+    @Select("select * from teacher where teacherName like #{teacherName}")
+    IPage<Teacher> findByName(Page<Teacher> page, String teacherName);
 }

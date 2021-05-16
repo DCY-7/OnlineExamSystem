@@ -27,6 +27,13 @@ public class TeacherController {
         return ApiResultHandler.buildApiResult(200,"查询所有教师",teacherIPage);
     }
 
+    @GetMapping("/teachers/{page}/{size}/{teacherName}")
+    public ApiResult findByName(@PathVariable Integer page, @PathVariable Integer size,@PathVariable("teacherName") String teacherName) {
+        Page<Teacher> teacherPage = new Page<>(page,size);
+        IPage<Teacher> res = teacherService.findByName(teacherPage,"%"+teacherName+"%");
+        return  ApiResultHandler.buildApiResult(200,"根据教师名字模糊查询所有教师",res);
+    }
+
     @GetMapping("/teacher/{teacherId}")
     public ApiResult findById(@PathVariable("teacherId") Integer teacherId){
         return ApiResultHandler.success(teacherService.findById(teacherId));

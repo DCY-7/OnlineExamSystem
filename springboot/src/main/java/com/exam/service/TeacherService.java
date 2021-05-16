@@ -2,6 +2,7 @@ package com.exam.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.exam.entity.Student;
 import com.exam.entity.Teacher;
 
 import java.util.List;
@@ -19,4 +20,6 @@ public interface TeacherService {
     public int update(Teacher teacher);
 
     public int add(Teacher teacher);
+
+    IPage<Teacher> findByName(Page<Teacher> page, String teacherName);
 }

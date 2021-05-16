@@ -2,6 +2,7 @@ package com.exam.serviceimpl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.exam.entity.Student;
 import com.exam.entity.Teacher;
 import com.exam.mapper.TeacherMapper;
 import com.exam.service.TeacherService;
@@ -38,6 +39,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public int update(Teacher teacher) {
         return teacherMapper.update(teacher);
+    }
+
+    @Override
+    public IPage<Teacher> findByName(Page<Teacher> page, String teacherName) {
+        return teacherMapper.findByName(page,teacherName);
     }
 
     @Override
