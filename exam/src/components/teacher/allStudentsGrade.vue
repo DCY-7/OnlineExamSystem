@@ -1,7 +1,13 @@
 // 所有学生
 <template>
   <div class="all">
+    <ul class="top">
+      <li class="order">学生信息列表</li>
+      <li class="search-li"><div class="icon"><input type="text" placeholder="学生姓名" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
+      <li><el-button type="primary" @click="search()">搜索学生</el-button></li>
+    </ul>
     <el-table :data="pagination.records" border>
+      <el-table-column fixed="left" prop="studentId" label="学号" width="180"></el-table-column>
       <el-table-column fixed="left" prop="studentName" label="姓名" width="180"></el-table-column>
       <el-table-column prop="institute" label="学院" width="200"></el-table-column>
       <el-table-column prop="major" label="专业" width="200"></el-table-column>
@@ -33,7 +39,7 @@ export default {
   data() {
     return {
       pagination: {
-        //分页后的考试信息
+        //分页后的学生成绩信息
         current: 1, //当前页
         total: null, //记录条数
         size: 6 //每页条数
@@ -45,7 +51,7 @@ export default {
   },
   methods: {
     getAnswerInfo() {
-      //分页查询所有试卷信息
+      //分页查询所有学生成绩信息
       this.$axios(`/api/students/${this.pagination.current}/${this.pagination.size}`).then(res => {
         this.pagination = res.data.data;
       }).catch(error => {});
@@ -59,6 +65,12 @@ export default {
     handleCurrentChange(val) {
       this.pagination.current = val;
       this.getAnswerInfo();
+    },
+    //按学生姓名模糊查询，学生考试信息
+    search() {
+      this.$axios(`/api/students/${this.pagination.current}/${this.pagination.size}/${this.key}`).then(res => {
+        this.pagination = res.data.data;
+      }).catch(error => {});
     },
     checkGrade(studentId) {
       this.$router.push({ path: "/grade", query: { studentId: studentId } });
@@ -88,5 +100,57 @@ export default {
 
 .el-table .success-row {
   background: #dd5862;
+}
+
+.top .order {
+  cursor: pointer;
+}
+.top .order:hover {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .order:visited {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .el-icon-search {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.top .icon {
+  position: relative;
+}
+.top {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.search-li {
+  margin-left: auto;
+}
+.top .search-li {
+  margin-left: auto;
+}
+.top li {
+  display: flex;
+  align-items: center;
+}
+.top .search {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.top .search:hover {
+  color: #0195ff;
+  border-color: #0195ff;
+}
+.top {
+  display: flex;
+}
+.top li {
+  margin: 20px;
 }
 </style>
