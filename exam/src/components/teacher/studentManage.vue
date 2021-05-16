@@ -4,7 +4,7 @@
     <ul class="top">
       <li class="order">学生信息列表</li>
       <li class="search-li"><div class="icon"><input type="text" placeholder="学生姓名" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
-      <li><el-button type="primary" @click="search()">搜索试卷</el-button></li>
+      <li><el-button type="primary" @click="search()">搜索学生</el-button></li>
     </ul>
     <el-table :data="pagination.records" border>
       <el-table-column fixed="left" prop="studentId" label="学号" width="150"></el-table-column>
