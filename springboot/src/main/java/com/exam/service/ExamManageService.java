@@ -23,4 +23,6 @@ public interface ExamManageService {
     int add(ExamManage exammanage);
 
     ExamManage findOnlyPaperId();
+
+    IPage<ExamManage> findByName(Page<ExamManage> examManagePagePage, String source);
 }

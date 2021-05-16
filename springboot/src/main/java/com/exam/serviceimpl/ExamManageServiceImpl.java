@@ -47,6 +47,11 @@ public class ExamManageServiceImpl implements ExamManageService {
     }
 
     @Override
+    public IPage<ExamManage> findByName(Page<ExamManage> examManagePage, String source) {
+        return examManageMapper.findByName(examManagePage,source);
+    }
+
+    @Override
     public ExamManage findOnlyPaperId() {
         return examManageMapper.findOnlyPaperId();
     }

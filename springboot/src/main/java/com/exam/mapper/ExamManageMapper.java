@@ -38,4 +38,7 @@ public interface ExamManageMapper {
      */
     @Select("select paperId from exam_manage order by paperId desc limit 1")
     ExamManage findOnlyPaperId();
+
+    @Select("select * from exam_manage where source like #{source}")
+    IPage<ExamManage> findByName(Page page, String source);
 }

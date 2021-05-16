@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.exam.entity.ApiResult;
 import com.exam.entity.ExamManage;
+import com.exam.entity.Student;
 import com.exam.serviceimpl.ExamManageServiceImpl;
 import com.exam.util.ApiResultHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,13 @@ public class ExamManageController {
         IPage<ExamManage> all = examManageService.findAll(examManage);
         apiResult = ApiResultHandler.buildApiResult(200, "请求成功！", all);
         return apiResult;
+    }
+
+    @GetMapping("/exams/{page}/{size}/{source}")
+    public ApiResult findBySource(@PathVariable Integer page, @PathVariable Integer size,@PathVariable("source") String source) {
+        Page<ExamManage> examManagePage = new Page<>(page,size);
+        IPage<ExamManage> res = examManageService.findByName(examManagePage,"%"+source+"%");
+        return  ApiResultHandler.buildApiResult(200,"根据考试名字模糊查询所有考试",res);
     }
 
     @GetMapping("/exam/{examCode}")

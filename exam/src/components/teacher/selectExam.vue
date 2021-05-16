@@ -1,7 +1,13 @@
 //查询所有考试
 <template>
   <div class="exam">
+    <ul class="top">
+      <li class="order">考试信息列表</li>
+      <li class="search-li"><div class="icon"><input type="text" placeholder="考试（试卷）名称" class="search" v-model="key"><i class="el-icon-search"></i></div></li>
+      <li><el-button type="primary" @click="search()">搜索考试</el-button></li>
+    </ul>
     <el-table :data="pagination.records" border>
+      <el-table-column fixed="left" prop="examCode" label="试卷编号" width="180"></el-table-column>
       <el-table-column fixed="left" prop="source" label="试卷名称" width="180"></el-table-column>
       <el-table-column prop="description" label="介绍" width="200"></el-table-column>
       <el-table-column prop="institute" label="所属学院" width="120"></el-table-column>
@@ -82,6 +88,7 @@
 export default {
   data() {
     return {
+      key: null, //搜索关键字
       form: {}, //保存点击以后当前试卷的信息
       pagination: { //分页后的考试信息
         current: 1, //当前页
@@ -149,6 +156,13 @@ export default {
       }).catch(error => {
       })
     },
+    //按试卷名称模糊查询，考试信息
+    search() {
+      this.$axios(`/api/exams/${this.pagination.current}/${this.pagination.size}/${this.key}`).then(res => {
+        this.pagination = res.data.data
+      }).catch(error => {
+      })
+    },
     //改变当前记录条数
     handleSizeChange(val) {
       this.pagination.size = val
@@ -174,5 +188,57 @@ export default {
   .edit{
     margin-left: 20px;
   }
+}
+
+.top .order {
+  cursor: pointer;
+}
+.top .order:hover {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .order:visited {
+  color: #0195ff;
+  border-bottom: 2px solid #0195ff;
+}
+.top .el-icon-search {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.top .icon {
+  position: relative;
+}
+.top {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.search-li {
+  margin-left: auto;
+}
+.top .search-li {
+  margin-left: auto;
+}
+.top li {
+  display: flex;
+  align-items: center;
+}
+.top .search {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.top .search:hover {
+  color: #0195ff;
+  border-color: #0195ff;
+}
+.top {
+  display: flex;
+}
+.top li {
+  margin: 20px;
 }
 </style>

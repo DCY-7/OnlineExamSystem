@@ -3,8 +3,9 @@
   <section class="description">
     <p class="title">考试管理功能介绍</p>
     <p class="content">老师发布了考试,学生才可以在主页面看到相应的考试信息。
-      有考试安排表以后,才能给该次考试添加题目,对应数据表是exammanage。
+      有考试安排表以后,才能给该次考试添加题目,对应数据表是exam_manage。
       该表保存该次考试,课程名称,考试时间,所属专业,学院等等信息。
+      添加一个考试也就是添加了一份试卷。
     </p>
   </section>
 </template>
