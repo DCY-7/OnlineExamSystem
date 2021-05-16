@@ -2,14 +2,14 @@
 <template>
   <div id="left">
     <el-menu
-      active-text-color="#dd5862" 
-      text-color="#000" 
+      active-text-color="#dd5862"
+      text-color="#000"
       :default-active="this.$route.path"
-      class="el-menu-vertical-demo" 
-      @open="handleOpen" 
-      @close="handleClose" 
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
       :collapse="flag"
-      background-color="#124280"  
+      background-color="#124280"
       menu-trigger="click" router>
       <el-submenu v-for="(item,index) in menu" :index='item.index' :key="index">
         <template slot="title">
@@ -19,9 +19,9 @@
           </div>
         </template>
         <el-menu-item-group v-for="(list,index1) in item.content" :key="index1">
-          <el-menu-item @click="handleTitle(item.index)" :index="list.path" v-if="list.item1 != null">{{list.item1}}</el-menu-item>
-          <el-menu-item @click="handleTitle(item.index)" :index="list.path" v-if="list.item2 != null">{{list.item2}}</el-menu-item>
-          <el-menu-item @click="handleTitle(item.index)" :index="list.path" v-if="list.item3 != null">{{list.item3}}</el-menu-item>
+          <el-menu-item style="color: #ffffff" @click="handleTitle(item.index)" :index="list.path" v-if="list.item1 != null">{{list.item1}}</el-menu-item>
+          <el-menu-item style="color: #ffffff" @click="handleTitle(item.index)" :index="list.path" v-if="list.item2 != null">{{list.item2}}</el-menu-item>
+          <el-menu-item style="color: #ffffff" @click="handleTitle(item.index)" :index="list.path" v-if="list.item3 != null">{{list.item3}}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -35,7 +35,7 @@ export default {
   name: "mainLeft",
   data() {
     return {
-      
+
     }
   },
   computed: mapState(["flag","menu"]),
