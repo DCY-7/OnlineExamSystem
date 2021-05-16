@@ -18,4 +18,6 @@ public interface StudentService {
 
     int updatePwd(Student student);
     int add(Student student);
+
+    IPage<Student> findByName(Page<Student> page,String studentName);
 }

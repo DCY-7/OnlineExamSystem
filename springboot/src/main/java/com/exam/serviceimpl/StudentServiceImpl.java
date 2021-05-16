@@ -45,4 +45,10 @@ public class StudentServiceImpl implements StudentService {
     public int add(Student student) {
         return studentMapper.add(student);
     }
+
+    @Override
+    public IPage<Student> findByName(Page<Student> page,String studentName) {
+        return studentMapper.findByName(page,studentName);
+    }
+
 }

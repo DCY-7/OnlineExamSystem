@@ -22,6 +22,13 @@ public class StudentController {
         return  ApiResultHandler.buildApiResult(200,"分页查询所有学生",res);
     }
 
+    @GetMapping("/students/{page}/{size}/{studentName}")
+    public ApiResult findByName(@PathVariable Integer page, @PathVariable Integer size,@PathVariable("studentName") String studentName) {
+        Page<Student> studentPage = new Page<>(page,size);
+        IPage<Student> res = studentService.findByName(studentPage,"%"+studentName+"%");
+        return  ApiResultHandler.buildApiResult(200,"根据学生名字模糊查询所有学生",res);
+    }
+
     @GetMapping("/student/{studentId}")
     public ApiResult findById(@PathVariable("studentId") Integer studentId) {
         Student res = studentService.findById(studentId);
