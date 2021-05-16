@@ -14,7 +14,7 @@
       <el-table-column prop="tips" label="考生提示" width="400"></el-table-column>
       <el-table-column fixed="right" label="操作" width="150">
         <template slot-scope="scope">
-          <el-button @click="add(scope.row.paperId,scope.row.source)" type="primary" size="small">增加题库</el-button>
+          <el-button @click="add(scope.row.paperId,scope.row.source)" type="primary" size="small">编辑试卷</el-button>
         </template>
       </el-table-column>
     </el-table>
